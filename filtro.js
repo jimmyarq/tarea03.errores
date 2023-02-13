@@ -1,5 +1,3 @@
-// Tenemos un li de productos
-
 const productos = [
   {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"},
   {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./taco-azul.jpg"},
@@ -8,7 +6,7 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsByName("lista-de-productos")
+const li = document.querySelector("#lista-de-productos")
 const $i = document.querySelector('.input');
 
 for (let i = 0; i < productos.length; i++) {
@@ -20,7 +18,7 @@ for (let i = 0; i < productos.length; i++) {
   ti.textContent = productos[i].nombre
   
   var imagen = document.createElement("img");
-  imagen.setAttribute('src', productos[i].img);
+  imagen.src = productos[i].img;
 
   d.appendChild(ti)
   d.appendChild(imagen)
@@ -28,8 +26,8 @@ for (let i = 0; i < productos.length; i++) {
   li.appendChild(d)
 }
 
-displayProductos(productos)
 const botonDeFiltro = document.querySelector("button");
+
 
 botonDeFiltro.onclick = function() {
   while (li.firstChild) {
@@ -49,15 +47,6 @@ botonDeFiltro.onclick = function() {
     ti.textContent = productosFiltrados[i].nombre
     
     var imagen = document.createElement("img");
-    imagen.setAttribute('src', productosFiltrados[i].img);
-  
-    d.appendChild(ti)
-    d.appendChild(imagen)
-  
-    li.appendChild(d)
+    imagen.src = productosFiltrados[i].img;
   }
 }
-
-const filtrado = (productos = [], texto) => {
-  return productos.filter(item => item.tipo.includes(texto) || item.color.includes(texto));
-}  
